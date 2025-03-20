@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"fotogames.gui"},{"l":"fotogames.persistencia"},{"l":"fotogames.persistencia.DAO"},{"l":"fotogames.persistencia.entidades"}];updateSearchResults();
