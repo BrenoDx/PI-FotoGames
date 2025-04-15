@@ -482,7 +482,7 @@ public class TelaVenda extends javax.swing.JFrame {
             }
 
         } catch (NumberFormatException | NullPointerException exp) {
-            JOptionPane.showMessageDialog(null, "ID cliente inexistente!");
+            JOptionPane.showMessageDialog(null, "ID orçamento inexistente!" + exp.getMessage());
         };
 
     }//GEN-LAST:event_BtPesOrcamentoActionPerformed

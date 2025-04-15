@@ -15,66 +15,68 @@ import javax.swing.JOptionPane;
  *
  * @author breno
  */
-
 /**
  * Classe responsável por manipular Orcamentos_Produtos no bd.
  */
 public class Orcamento_ProdutoDAO {
+
     private static EntityManager em; //Instância EntityManager
-    
+
     /**
-     * Método para cadastrar 
+     * Método para cadastrar
      */
-    public void cadastrar(Orcamento_Produto op){
+    public void cadastrar(Orcamento_Produto op) {
         em = JPAUtil.getEntityManager();
-        try{
+        try {
             em.getTransaction().begin();
             em.persist(op);
             em.getTransaction().commit();
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Não foi possível cadastrar!");
-        }finally{
+        } finally {
             JPAUtil.closeEntity();
-        }         
+        }
     }
-    
+
     /**
-     * Método para listar. 
+     * Método para listar.
      */
-    public List<Orcamento_Produto> listar(){
-       em = JPAUtil.getEntityManager();
-       List<Orcamento_Produto> lista;
-       try{
-           Query consulta = em.createQuery("SELECT op FROM Orcamento_Produto op");
-           lista = consulta.getResultList();
-           return lista;
-       }catch(Exception e){
-           JOptionPane.showMessageDialog(null, "Nenhum orcamento encontrado!");
-       }finally{
-           JPAUtil.closeEntity();
-       }
-        return null;
-    }
-    
-    /**
-     * Método para retornar um Orcamento_Produto. 
-     */
-        public Orcamento_Produto getOP(int id) {
+    public List<Orcamento_Produto> listar() {
+        em = JPAUtil.getEntityManager();
+        List<Orcamento_Produto> lista;
         try {
-            em = JPAUtil.getEntityManager();
-            
-            Query consulta = em.createQuery("SELECT op FROM Orcamento_Produto op JOIN op.orcamento o WHERE o.id = :id ");
-            consulta.setParameter("id", id);
-            
-            Orcamento_Produto op = (Orcamento_Produto) consulta.getSingleResult();
-            return op;
-        } catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Cliente não encontrado!");
-        }finally {
+            Query consulta = em.createQuery("SELECT op FROM Orcamento_Produto op");
+            lista = consulta.getResultList();
+            return lista;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Nenhum orcamento encontrado!");
+        } finally {
             JPAUtil.closeEntity();
         }
         return null;
     }
-    
-}
+
+    /**
+     * Método para retornar um Orcamento_Produto.
+     */
+    public Orcamento_Produto getOP(int id) {
+        try {
+            em = JPAUtil.getEntityManager();
+
+            Query consulta = em.createQuery("SELECT op FROM Orcamento_Produto op JOIN op.orcamento o WHERE o.id = :id ");
+            consulta.setParameter("id", id);
+
+            List<Orcamento_Produto> lista = consulta.getResultList();
+            if (!lista.isEmpty()) 
+                return lista.get(0); 
+                
+            }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado!");
+        }finally {
+            JPAUtil.closeEntity();
+        }
+            return null;
+        }
+
+    }
