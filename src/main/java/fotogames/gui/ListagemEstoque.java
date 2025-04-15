@@ -129,6 +129,7 @@ public class ListagemEstoque extends javax.swing.JFrame {
         if(linhaSelecionada != -1){
             int id = Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
             EdicaoEstoque telaEstoque = new EdicaoEstoque(id);
+            dispose();
             telaEstoque.setVisible(true);
             
         }else{

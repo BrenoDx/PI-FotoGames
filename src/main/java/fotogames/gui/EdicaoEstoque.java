@@ -332,6 +332,8 @@ public class EdicaoEstoque extends javax.swing.JFrame {
      */
     private void BtVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtVoltarActionPerformed
         dispose();
+        ListagemEstoque tela = new ListagemEstoque();
+        tela.setVisible(true);
     }//GEN-LAST:event_BtVoltarActionPerformed
 
     /*
