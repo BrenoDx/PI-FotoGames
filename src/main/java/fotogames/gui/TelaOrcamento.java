@@ -80,6 +80,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
         LbValor = new javax.swing.JLabel();
         LbValorTotal = new javax.swing.JLabel();
         BtRegistrar = new javax.swing.JButton();
+        BtLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -202,7 +203,15 @@ public class TelaOrcamento extends javax.swing.JFrame {
                 BtRegistrarActionPerformed(evt);
             }
         });
-        jPanel3.add(BtRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 90, -1));
+        jPanel3.add(BtRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 90, -1));
+
+        BtLimpar.setText("Limpar");
+        BtLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtLimparActionPerformed(evt);
+            }
+        });
+        jPanel3.add(BtLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -210,7 +219,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -265,7 +274,6 @@ public class TelaOrcamento extends javax.swing.JFrame {
     *Ação do botão registrar.
     */
     private void BtRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtRegistrarActionPerformed
-
         cadastrarOrcamento();
         clear();
     }//GEN-LAST:event_BtRegistrarActionPerformed
@@ -304,6 +312,10 @@ public class TelaOrcamento extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ID cliente inexistente!");
         };
     }//GEN-LAST:event_BtPesquisarActionPerformed
+
+    private void BtLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtLimparActionPerformed
+        clear();
+    }//GEN-LAST:event_BtLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,6 +357,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
     private javax.swing.JButton BtAdicionar;
     private javax.swing.JButton BtClientes;
     private javax.swing.JButton BtHistorico;
+    private javax.swing.JButton BtLimpar;
     private javax.swing.JButton BtPesquisar;
     private javax.swing.JButton BtRegistrar;
     private javax.swing.JComboBox<String> CbPagamento;
@@ -386,7 +399,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
                 orcamento.setCliente(clienteEncontrado);
                 oDAO.cadastrar(orcamento);
 
-                for (int i = 0; i <= produtoSelecionado.size(); i++) {
+                for (int i = 0; i < produtoSelecionado.size(); i++) {
                     Produto pAtual = produtoSelecionado.get(i);
                     Orcamento_Produto op = new Orcamento_Produto();
                     op.setValorTotal(soma);
@@ -394,7 +407,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
                     op.setProduto(pAtual);
 
                     opDAO.cadastrar(op);
-
+                    
                 }
             } else {
                 Orcamento orcamento = new Orcamento();
@@ -402,7 +415,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
                 orcamento.setCliente(cadastrarCliente());
                 oDAO.cadastrar(orcamento);
 
-                for (int i = 0; i <= produtoSelecionado.size(); i++) {
+                for (int i = 0; i < produtoSelecionado.size(); i++) {
                     Produto pAtual = produtoSelecionado.get(i);
                     Orcamento_Produto op = new Orcamento_Produto();
                     op.setValorTotal(soma);
@@ -410,7 +423,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
                     op.setProduto(pAtual);
 
                     opDAO.cadastrar(op);
-
+                    
                 }
 
             }
@@ -474,7 +487,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
         clienteNovo.setTelefone(TxTelefone.getText());
 
         cDAO.cadastrar(clienteNovo);
-
+        
         return clienteNovo;
     }
     
