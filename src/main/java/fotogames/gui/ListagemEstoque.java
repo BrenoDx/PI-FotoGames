@@ -69,6 +69,11 @@ public class ListagemEstoque extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         BtCadastrar.setText("Cadastrar");
+        BtCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtCadastrarActionPerformed(evt);
+            }
+        });
 
         BtEditar.setText("Editar");
         BtEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +135,10 @@ public class ListagemEstoque extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione um produto!");
         }
     }//GEN-LAST:event_BtEditarActionPerformed
+
+    private void BtCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCadastrarActionPerformed
+        dispose();
+    }//GEN-LAST:event_BtCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
