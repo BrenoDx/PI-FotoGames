@@ -19,8 +19,8 @@ INSERT INTO produto(nomeProduto, fabricante, categoria, plataforma, cor, garanti
 ("Ryzen 5 5600", "AMD", "Hardware", null, null, 60, 848.99), ("Core I5-13400F", "INTEL", "Hardware", null, null, 60, 1300),
 ("Core I5-11400F","INTEL", "Hardware", null, null, 60, 980), ("Pulse Elite", "SONY", "Acessórios", null, "Branco", 60, 929.21),
 ("Headset Zeus Pro", "REDRAGON", "Acessórios", null, "Preto", 60, 329.90), ("Headset A50", "ASTRO", "Acessórios", null, "Preto", 60, 1499.99),
-("Spider-Man 2", "INSOMNIAC", "Jogo", 60, 269.90), ("Stellar Blade", "SHIFT UP", "Jogo", "PS5", null, 30, 263.91),
-("EA Sports FC 24", "ELETRONIC ARTS", "Jogo", null, 250.00), ("Elden Ring", "FromSoftware", "Jogo", "PS5", null, 30, 249.99),
+("Spider-Man 2", "INSOMNIAC", "Jogo", "PS5", null, 60, 269.90), ("Stellar Blade", "SHIFT UP", "Jogo", "PS5", null, 30, 263.91),
+("EA Sports FC 24", "ELETRONIC ARTS", "Jogo", "PS5", null, 30, 250.00), ("Elden Ring", "FromSoftware", "Jogo", "PS5", null, 30, 249.99),
 ("Death Strandig", "KOJIMA PRODUCTIONS", "Jogo", "PS5", null, 30, 219.91);
 
 INSERT INTO estoque(quantidade,produto_id) VALUES
