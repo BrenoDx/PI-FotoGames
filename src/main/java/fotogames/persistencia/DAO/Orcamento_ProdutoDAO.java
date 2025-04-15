@@ -46,7 +46,11 @@ public class Orcamento_ProdutoDAO {
         em = JPAUtil.getEntityManager();
         List<Orcamento_Produto> lista;
         try {
-            Query consulta = em.createQuery("SELECT op FROM Orcamento_Produto op");
+            Query consulta = em.createQuery("SELECT op FROM Orcamento_Produto op WHERE op.orcamento.id IN ("
+                    + "SELECT DISTINCT op2.orcamento.id FROM Orcamento_Produto op2"
+                    + ")",
+                    Orcamento_Produto.class
+            );
             lista = consulta.getResultList();
             return lista;
         } catch (Exception e) {
@@ -68,15 +72,16 @@ public class Orcamento_ProdutoDAO {
             consulta.setParameter("id", id);
 
             List<Orcamento_Produto> lista = consulta.getResultList();
-            if (!lista.isEmpty()) 
-                return lista.get(0); 
-                
-            }catch(Exception e){
+            if (!lista.isEmpty()) {
+                return lista.get(0);
+            }
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Cliente não encontrado!");
-        }finally {
+        } finally {
             JPAUtil.closeEntity();
         }
-            return null;
-        }
-
+        return null;
     }
+
+}
